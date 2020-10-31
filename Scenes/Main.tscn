@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Draw/DrawNode.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/DivSelectionBox.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/DivScrollBox.gd" type="Script" id=4]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Control" type="Control" parent="Camera2D"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="Camera2D/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.png" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AppendBtn" type="Button" parent="Camera2D/Control"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 52.0
+margin_bottom = 20.0
+text = "Append"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddBtn" type="Button" parent="Camera2D/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -6.0
+margin_top = 20.0
+margin_right = 6.0
+margin_bottom = 20.0
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExportBtn" type="Button" parent="Camera2D/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -72.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 20.0
+text = "Export"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -75.0
+margin_right = -200.0
+scroll_horizontal_enabled = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DivSelectionBox" type="VBoxContainer" parent="Camera2D/Control/ScrollContainer"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimNameTxt" type="TextEdit" parent="Camera2D/Control"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 155.0
+margin_bottom = 80.0
+text = "Anim Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimFrameTxt" type="TextEdit" parent="Camera2D/Control"]
+margin_left = 20.0
+margin_top = 90.0
+margin_right = 155.0
+margin_bottom = 120.0
+text = "0"
+readonly = true
+
+[node name="DrawNode" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource( 2 )
